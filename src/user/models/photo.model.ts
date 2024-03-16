@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
-import { Column, CreatedAt, DataType, Model, Table, UpdatedAt } from 'sequelize-typescript';
+import { BelongsTo, Column, CreatedAt, DataType, Model, Table, UpdatedAt } from 'sequelize-typescript';
+import { User } from './user.model';
 
 @Table({ tableName: 'photo' })
 export class Photo extends Model {
@@ -43,7 +44,10 @@ export class Photo extends Model {
   })
   updatedAt: Date;
 
-  static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-  }
+  @BelongsTo(() => User, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+  user: User;
 }

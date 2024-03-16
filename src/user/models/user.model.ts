@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize';
-import { Column, CreatedAt, DataType, Model, Table, UpdatedAt } from 'sequelize-typescript';
+import { Column, CreatedAt, DataType, HasMany, HasOne, Model, Table, UpdatedAt } from 'sequelize-typescript';
+import { CreditCard } from './credit-card.model';
+import { Photo } from './photo.model';
 
 @Table({ tableName: 'user' })
 export class User extends Model {
@@ -56,13 +58,22 @@ export class User extends Model {
   })
   updatedAt: Date;
 
+  @HasOne(() => CreditCard , {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+  creditcard: CreditCard[];
+
+  @HasMany(() => Photo , {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+  photos: Photo[];
+
   // Custom property to format updatedAt as a string
   get formattedUpdatedAt(): string {
     return this.updatedAt.toISOString(); // or use your preferred date formatting method
-  }
-
-  static associate(models) {
-    this.hasOne(models.CreditCard, { foreignKey: 'user_id', as: 'creditcard' });
-    this.hasMany(models.Photo, { foreignKey: 'user_id', as: 'photos' });
   }
 }

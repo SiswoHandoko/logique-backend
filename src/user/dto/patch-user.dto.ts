@@ -1,6 +1,5 @@
-import { IsEmail, IsString, IsArray, Validate, IsEnum, minLength, MinLength, MaxLength } from 'class-validator';
+import { IsEmail, IsString, IsArray, Validate, IsEnum, minLength, MinLength, MaxLength, IsOptional, IsNumberString, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
-import { CustomIsNotEmpty } from './custom-validation/not-empty.validator';
 import { IsMMYYFormat } from './custom-validation/mm-yy-format.validator';
 
 enum CreditCardType {
@@ -10,49 +9,53 @@ enum CreditCardType {
   Titanium = 'Titanium',
 }
 
-export class RegisterUserDto {
-  @Validate(CustomIsNotEmpty, ['name'])
+export class PatchUserDto {
+  @IsOptional()
+  @IsNumber()
+  user_id: number;
+
+  @IsOptional()
   @IsString()
   name: string;
 
-  @Validate(CustomIsNotEmpty, ['address'])
+  @IsOptional()
   @IsString()
   address: string;
 
-  @Validate(CustomIsNotEmpty, ['email'])
+  @IsOptional()  
   @IsEmail()
   email: string;
 
-  @Validate(CustomIsNotEmpty, ['password'])
+  @IsOptional()
   @IsString()
   password: string;
 
-  @Validate(CustomIsNotEmpty, ['photos'])
+  @IsOptional()
   @IsArray()
   @Type(() => String)
   photos: string[];
 
-  @Validate(CustomIsNotEmpty, ['creditcard_type'])
+  @IsOptional()
   @IsEnum(CreditCardType)
   @IsString()
   creditcard_type: string;
 
-  @Validate(CustomIsNotEmpty, ['creditcard_number'])
+  @IsOptional()
   @IsString()
   @MinLength(10)
   @MaxLength(13)
   creditcard_number: string;
 
-  @Validate(CustomIsNotEmpty, ['creditcard_name'])
+  @IsOptional()
   @IsString()
   creditcard_name: string;
 
-  @Validate(CustomIsNotEmpty, ['creditcard_expired'])
+  @IsOptional()
   @IsString()
   @Validate(IsMMYYFormat)
   creditcard_expired: string;
 
-  @Validate(CustomIsNotEmpty, ['creditcard_cvv'])
+  @IsOptional()
   @IsString()
   @MinLength(3)
   @MaxLength(3)

@@ -10,7 +10,7 @@ module.exports = {
         type: 'Silver',
         number: '9009129389192',
         name: 'Siswo Handoko',
-        expired: '04/2028',
+        expired: '04/28',
         cvv: '442',
         created_at: new Date(),
         updated_at: new Date()
@@ -20,7 +20,7 @@ module.exports = {
         type: 'Platinum',
         number: '8747281200122',
         name: 'Dimas Wahyudi',
-        expired: '02/2024',
+        expired: '02/24',
         cvv: '818',
         created_at: new Date(),
         updated_at: new Date()
