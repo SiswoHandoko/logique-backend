@@ -140,18 +140,19 @@ export class UsersService {
    async patch(data: PatchUserDto): Promise<any> {
     const trx = await this.sequelize.transaction();
     try {
-      let user;
+
+      let user:any = {};
       if (data.name) user.name = data.name;
       if (data.address) user.address = data.address;
       if (data.email) user.email = data.email;
       if (data.password) user.password = await bcrypt.hash(data.password, 10);
-      
+
       const [updatedRowsUser] = await User.update(
         user,
         { where: { id: data.user_id }, transaction:trx }
       );
 
-      let creditcard;
+      let creditcard:any={};
       if (data.creditcard_type) creditcard.type = data.creditcard_type;
       if (data.creditcard_number) creditcard.number = data.creditcard_number;
       if (data.creditcard_name) creditcard.name = data.creditcard_name;
@@ -163,9 +164,22 @@ export class UsersService {
         { where: { userId: data.user_id }, transaction:trx }
       );
 
+      if(data.photos && data.photos.length>0){
+        await Photo.destroy(
+          { where: { userId: data.user_id }, transaction:trx }
+        );
+
+        const transformedPhoto = data.photos.map(url => {
+          return { userId:data.user_id, url };
+        });
+  
+        await this.photoModel.bulkCreate(transformedPhoto, { transaction: trx });
+          
+      }
+
       await trx.commit();
       return {
-        user_id:1
+        success:true
       };
     } catch (error) {
       await trx.rollback();
