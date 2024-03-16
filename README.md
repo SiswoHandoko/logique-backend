@@ -58,16 +58,6 @@ $ npx sequelize-cli db:seed:all
 docker build -t logique-app .
 ```
 
-## Unit Test Command
-
-```bash
-# unit tests
-$ npm run test
-
-# test show coverage
-$ npm run test:cov
-```
-
 ## Logical Test
 I put answer for Logical Test in folder 
 ```bash
