@@ -52,6 +52,12 @@ $ npx sequelize-cli db:migrate
 $ npx sequelize-cli db:seed:all
 ```
 
+## Docker Build Command
+
+```bash
+docker build -t logique-app .
+```
+
 ## Unit Test Command
 
 ```bash
