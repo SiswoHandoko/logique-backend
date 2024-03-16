@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "16085eaa-274f-4629-b2b0-9e46d0ae7c70",
+		"name": "Logique Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "290234"
+	},
+	"item": [
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "HiJhvL$T27@1u^%u86g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sonia3\",\r\n    \"address\": \"JL RE Martadinata no 31 Jawa Barat\",\r\n    \"email\": \"sonia@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"photos\": [\"https://picsum.photos/200\",\"https://picsum.photos/200\"],\r\n    \"creditcard_type\": \"Platinum\",\r\n    \"creditcard_number\": \"8918288191295\",\r\n    \"creditcard_name\":\"Sonia\",\r\n    \"creditcard_expired\": \"12/25\",\r\n    \"creditcard_cvv\": \"928\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "key",
+						"value": "HiJhvL$T27@1u^%u86g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":22,\r\n    \"name\": \"Sonia4\",\r\n    \"address\": \"JL RE Martadinata no 31 Jawa Barat\",\r\n    \"email\": \"sonia@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"photos\": [\"https://picsum.photos/300\",\"https://picsum.photos/300\"],\r\n    \"creditcard_type\": \"Platinum\",\r\n    \"creditcard_number\": \"8918288191295\",\r\n    \"creditcard_name\":\"Sonisa\",\r\n    \"creditcard_expired\": \"03/23\",\r\n    \"creditcard_cvv\": \"928\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "HiJhvL$T27@1u^%u86g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/list?q=&ob=name&sb=asc&of=0&lt=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"list"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": ""
+						},
+						{
+							"key": "ob",
+							"value": "name"
+						},
+						{
+							"key": "sb",
+							"value": "asc"
+						},
+						{
+							"key": "of",
+							"value": "0"
+						},
+						{
+							"key": "lt",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "HiJhvL$T27@1u^%u86g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/list?q=&ob=name&sb=asc&of=0&lt=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"list"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": ""
+						},
+						{
+							"key": "ob",
+							"value": "name"
+						},
+						{
+							"key": "sb",
+							"value": "asc"
+						},
+						{
+							"key": "of",
+							"value": "0"
+						},
+						{
+							"key": "lt",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
